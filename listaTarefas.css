@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f4f6f8;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.container {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  max-width: 600px;
+  border: 2px solid #d0d5da;
+  margin: auto;
+}
+
+h1 {
+  color: #2d3436;
+}
+
+p {
+  color: #2d3436;
+  font-size: 1.1em;
+}
+
+button {
+  background-color: #4a90d9;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+button:hover {
+  background-color: #3a7dc4;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+ul li {
+  background-color: #6c82ff54;
+  color: #2d3436;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li .botaoConcluir {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 0;
+  padding: 3px;
+  background-color: #e57373;
+}
+
+.botaoConcluir:hover {
+  background-color: #d45f5f;
+}
+
+li .botaoExcluir {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 0;
+  padding: 3px;
+  background-color: #e57373;
+}
+
+.botaoExcluir:hover {
+  background-color: #d45f5f;
+}
+
+li .botoesListaTarefas {
+  display: flex;
+  gap: 10px;
+}
+
+/* Estilo para o campo de entrada */
+input[type="text"] {
+  padding: 10px;
+  width: 80%;
+  max-width: 500px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #d0d5da;
+  border-radius: 5px;
+  font-size: 1em;
+  box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #4a90d9;
+  box-shadow: inset 0 2px 4px rgba(16, 56, 141, 0.3);
+}
+
+.concluida {
+  text-decoration: line-through;
+  color: #9a9a9a;
+}
