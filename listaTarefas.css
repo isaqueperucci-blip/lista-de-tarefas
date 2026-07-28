@@ -45,14 +45,17 @@ button {
   transition: background-color 0.3s ease;
   margin-top: 10px;
 }
+
 button:hover {
   background-color: #3a7dc4;
 }
+
 ul {
   list-style: none;
   padding: 0;
   margin-top: 20px;
 }
+
 ul li {
   background-color: #6c82ff54;
   color: #2d3436;
@@ -97,7 +100,6 @@ li .botoesListaTarefas {
   gap: 10px;
 }
 
-/* Estilo para o campo de entrada */
 input[type="text"] {
   padding: 10px;
   width: 80%;
