@@ -67,6 +67,7 @@ ul li {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  transition: background-color 0.3s ease;
 }
 
 li .botaoConcluir {
@@ -120,6 +121,6 @@ input[type="text"]:focus {
 }
 
 .concluida {
-  text-decoration: line-through;
-  color: #9a9a9a;
+  color: #29a73e;
+  background-color: #29a73e79;
 }

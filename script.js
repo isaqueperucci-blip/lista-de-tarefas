@@ -1,7 +1,21 @@
-let tarefas = [];
+let tarefasSalvas = localStorage.getItem("minhasTarefas");
+let tarefas = tarefasSalvas ? JSON.parse(tarefasSalvas) : [];
+
+const inputTarefa = document.getElementById("inputTarefa");
+
+renderizarTarefas();
+
+inputTarefa.addEventListener("keydown", function (evento) {
+  if (evento.key === "Enter") {
+    adicionarTarefa();
+  }
+});
+
+function salvarTarefas() {
+  localStorage.setItem("minhasTarefas", JSON.stringify(tarefas));
+}
 
 function adicionarTarefa() {
-  const inputTarefa = document.getElementById("inputTarefa");
   const mensagem = document.getElementById("mensagem");
   let tarefa = inputTarefa.value.trim();
 
@@ -12,9 +26,11 @@ function adicionarTarefa() {
     mensagem.textContent = "Tarefa enviada com sucesso!!";
     mensagem.style.color = "#29a73e";
 
-    tarefas.push(tarefa);
+    tarefas.push({ texto: tarefa, concluida: false });
+    salvarTarefas();
     renderizarTarefas();
   }
+  setTimeout(() => (mensagem.textContent = ""), 3000);
   inputTarefa.value = "";
   inputTarefa.focus();
 }
@@ -22,28 +38,36 @@ function adicionarTarefa() {
 function renderizarTarefas() {
   const listaTarefas = document.getElementById("listaTarefas");
   const mensagem = document.getElementById("mensagem");
-  listaTarefas.innerHTML = "";
+  listaTarefas.textContent = "";
 
   for (let i = 0; i < tarefas.length; i++) {
     const novaTarefa = document.createElement("li");
 
     const textoTarefa = document.createElement("span");
-    textoTarefa.textContent = tarefas[i];
+    textoTarefa.textContent = tarefas[i].texto;
     textoTarefa.className = "nomeTarefa";
 
     const div = document.createElement("div");
     div.className = "botoesListaTarefas";
 
     const botaoConcluir = document.createElement("button");
-    botaoConcluir.textContent = "✔️";
+    botaoConcluir.textContent = tarefas[i].concluida ? "↩️" : "✔️";
     botaoConcluir.className = "botaoConcluir";
 
     const botaoExcluir = document.createElement("button");
     botaoExcluir.textContent = "🗑️";
     botaoExcluir.className = "botaoExcluir";
 
-    botaoConcluir.addEventListener("click", function () {
-      textoTarefa.classList.toggle("concluida");
+    if (tarefas[i].concluida) {
+      novaTarefa.classList.add("concluida");
+    }
+
+    botaoConcluir.addEventListener("click", function (evento) {
+      evento.stopPropagation();
+      tarefas[i].concluida = !tarefas[i].concluida;
+      novaTarefa.classList.toggle("concluida");
+      botaoConcluir.textContent = tarefas[i].concluida ? "↩️" : "✔️";
+      salvarTarefas();
     });
 
     novaTarefa.appendChild(textoTarefa);
@@ -55,8 +79,10 @@ function renderizarTarefas() {
     botaoExcluir.addEventListener("click", function (evento) {
       evento.stopPropagation();
       tarefas.splice(i, 1);
+      salvarTarefas();
       mensagem.textContent = "Tarefa excluída com sucesso!!";
       mensagem.style.color = "#29a73e";
+      setTimeout(() => (mensagem.textContent = ""), 3000);
       renderizarTarefas();
     });
   }
