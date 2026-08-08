@@ -27,7 +27,7 @@ body {
   box-sizing: border-box;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 300px) {
   body {
     padding: 16px;
   }
@@ -52,13 +52,17 @@ body {
   }
 
   button {
-    width: 100%;
+    width: 50%;
   }
 
   .nomeTarefa {
-    width: 100%;
+    width: 50%;
     text-align: left;
     min-width: 0;
+    max-width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   h1 {
@@ -108,9 +112,9 @@ ul li {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   gap: 8px;
   transition: background-color 0.3s ease;
+  overflow: hidden;
 }
 
 li .botaoConcluir {
@@ -142,6 +146,7 @@ li .botaoExcluir {
 li .botoesListaTarefas {
   display: flex;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 input[type="text"] {
@@ -169,4 +174,12 @@ input[type="text"]:focus {
 .concluida {
   color: #29a73e;
   background-color: #29a73e79;
+}
+
+.nomeTarefa {
+  min-width: 0;
+  max-width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
